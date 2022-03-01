@@ -1,0 +1,117 @@
+package interfaz;
+
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
+
+public class Pantallas extends JFrame {
+
+	public static String Usuario;
+	public static String Contrasena;
+
+	JTable table;
+	
+	
+	public void PerfilAdmin() {
+		
+		
+		this.setTitle("Loginas");
+		this.setSize(400,400);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		
+		JLabel lbl = new JLabel("Usuario: " + Usuario);
+		lbl.setBounds(10,10,130,40);
+		this.add(lbl);
+		
+		 lbl = new JLabel("Admin");
+		lbl.setBounds(10,30,130,40);
+		this.add(lbl);
+		
+		//Tbla
+		setLayout(new FlowLayout());
+		String[] columnNames = {"Name","Eye=Color","Gender"};
+		Object[][] data = {
+				
+				{"Bill","Hazles","Male"},	
+				{"Mary","bLACK","fAMALE"},	
+				{"Rick","Red","Male"},	
+				{"Janice","Yellow","fALE"},	
+		};
+	
+		table = new JTable (data,columnNames);
+		table.setPreferredScrollableViewportSize(new Dimension(500,100));
+		table.setBounds(30, 40, 200, 300);
+		table.setFillsViewportHeight(true);
+		JScrollPane scrollPane = new JScrollPane(table);
+		add(scrollPane);
+		
+		
+		JButton boton = new JButton("Editar");
+		boton.setBounds(50,150,150,20);
+		this.add(boton);
+		boton.addActionListener(new ActionListener() 
+		{public void actionPerformed(ActionEvent e) {dispose(); Principal p = new Principal();}});
+		
+		
+		boton = new JButton("Regresar");
+		boton.setBounds(5,250,150,20);
+		this.add(boton);
+		boton.addActionListener(new ActionListener() 
+		{public void actionPerformed(ActionEvent e) {dispose(); Principal p = new Principal();}});
+		
+		this.setVisible(true);
+		
+	}
+	
+	public void USuarioAdmin() {
+		
+		
+		this.setTitle("Nuevo Usuario");
+		this.setSize(400,400);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		
+		JLabel lbl = new JLabel("Crear nuevo usuario") ;
+		lbl.setBounds(10,1,130,40);
+		this.add(lbl);
+		
+		
+		lbl = new JLabel("Usuario: ");
+		lbl.setBounds(10,50,130,20);
+		this.add(lbl);
+		
+		JTextField usu = new JTextField("");
+		usu.setBounds(100,50,130,20);
+		this.add(usu);
+		
+		lbl = new JLabel("Contrasena: ");
+		lbl.setBounds(10,100,130,20);
+		this.add(lbl);
+		
+		 usu = new JTextField("");
+		usu.setBounds(100,100,130,20);
+		this.add(usu);
+		
+		JButton boton = new JButton("Regresar");
+		boton.setBounds(10,150,150,20);
+		this.add(boton);
+		boton.addActionListener(new ActionListener() 
+		{public void actionPerformed(ActionEvent e) {dispose(); Principal p = new Principal();}});
+		
+		this.setVisible(true);
+		
+	}
+	
+	
+	
+}

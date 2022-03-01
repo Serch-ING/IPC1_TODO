@@ -1,0 +1,24 @@
+import interfaz.ingreso;
+import save.AlmacenarDatos;
+
+
+
+public class main {
+	
+	 static AlmacenarDatos almace;
+	
+	public static void main(String[] args) {
+
+
+		ingreso login = new ingreso();
+		
+		AlmacenarDatos.addAdmib("Usuario","Maestro","1","12");
+		
+		System.out.println(AlmacenarDatos.Administradores[0][0]);
+		
+		
+		
+		
+	}
+
+}

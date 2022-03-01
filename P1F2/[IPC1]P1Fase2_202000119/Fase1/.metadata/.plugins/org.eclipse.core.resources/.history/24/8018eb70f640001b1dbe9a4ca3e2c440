@@ -1,0 +1,149 @@
+package interfaz;
+import javax.swing.*;
+import usuarios.GestorUsuarios;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class Principal extends JFrame{
+	JTable table;
+	JButton boton;
+	Pantallas pan = new Pantallas();
+	
+		public Principal() {
+			//VENTANA
+			this.setTitle("Ventana Principal Admin");
+			this.setSize(700,700);
+			this.setLayout(null);
+			this.setLocationRelativeTo(null);
+			this.setVisible(true);
+			
+			//BOton 
+			boton = new JButton("Perfil");
+			boton.setBounds(125,120,150,20);
+			this.add(boton);
+			boton.addActionListener(new ActionListener() 
+			{public void actionPerformed(ActionEvent e) { pan.PerfilAdmin(); dispose();}});
+			
+			//Tbla
+			setLayout(new FlowLayout());
+			String[] columnNames = {"Name","Eye=Color","Gender"};
+			Object[][] data = {
+					
+					{"Bill","Hazles","Male"},	
+					{"Mary","bLACK","fAMALE"},	
+					{"Rick","Red","Male"},	
+					{"Janice","Yellow","fALE"},	
+			};
+		
+			table = new JTable (data,columnNames);
+			table.setPreferredScrollableViewportSize(new Dimension(500,100));
+			table.setBounds(30, 40, 200, 300);
+			table.setFillsViewportHeight(true);
+			JScrollPane scrollPane = new JScrollPane(table);
+			add(scrollPane);
+			
+			
+		}
+		
+		
+		public void PerfilAdmin() {
+			
+			
+			this.setTitle("Loginas");
+			this.setSize(400,400);
+			this.setLayout(null);
+			this.setLocationRelativeTo(null);
+			
+			JLabel lbl = new JLabel("Recuperar Contrasena");
+			lbl.setBounds(140,10,130,40);
+			this.add(lbl);
+			
+		
+			JTextField tf = new JTextField("Usuario");
+			tf.setBounds(125,120,150,20);
+			this.getContentPane().add(tf);
+			this.setVisible(true);
+			
+			
+			JTextField t = new JTextField("Ingrese pregunta secreta");
+			t.setBounds(125,150,150,20);
+			this.getContentPane().add(t);
+			this.setVisible(true);
+			
+			
+			JButton boton = new JButton("Rescuperar contraseña");
+			boton.setBounds(125,250,150,20);
+			this.add(boton);
+			
+		}
+		
+		
+		
+		//Pantalla recupeara contrasena
+		public void Recuperar() {
+			
+			this.setTitle("Loginas");
+			this.setSize(400,400);
+			this.setLayout(null);
+			this.setLocationRelativeTo(null);
+			
+			JLabel lbl = new JLabel("Recuperar Contrasena");
+			lbl.setBounds(140,10,130,40);
+			this.add(lbl);
+			
+		
+			JTextField tf = new JTextField("Usuario");
+			tf.setBounds(125,120,150,20);
+			this.getContentPane().add(tf);
+			this.setVisible(true);
+			
+			
+			JTextField t = new JTextField("Ingrese pregunta secreta");
+			t.setBounds(125,150,150,20);
+			this.getContentPane().add(t);
+			this.setVisible(true);
+			
+			
+			JButton boton = new JButton("Rescuperar contraseña");
+			boton.setBounds(125,250,150,20);
+			this.add(boton);
+			
+			
+			MouseListener volver = new MouseListener() {
+
+				@Override
+				public void mouseClicked(MouseEvent e) { 
+					GestorUsuarios gestor = new GestorUsuarios();	
+					gestor.insertar("1","1");
+					dispose();
+						Login l = new Login(gestor);
+				
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {}
+				@Override
+				public void mouseReleased(MouseEvent e) {}
+				@Override
+				public void mouseEntered(MouseEvent e) {}
+				@Override
+				public void mouseExited(MouseEvent e) {}};
+			
+			
+			
+			JLabel lb = new JLabel("Regresa al inicio de Sesion");
+			lb.setBounds(140,300,130,40);
+			this.add(lb);
+			lb.addMouseListener(volver);
+			
+			
+			
+}		
+		
+		
+
+}

@@ -1,0 +1,186 @@
+package menu;
+import java.util.Scanner;
+
+
+
+import users.UserManager;
+import optencion.obtenercsv;
+
+public class Menu {
+	public static String[ ][] useras= new String[11][12];
+	
+	static Scanner sc = new Scanner(System.in);
+	static obtenercsv as = new obtenercsv();
+	
+	//Verificacion login
+	public static boolean regla;
+
+	
+	//Switch menu
+	public static int op;
+	
+	
+	public static int otro;
+	
+	
+	public static String ruta; 
+	
+	UserManager usuarios;
+
+	public Menu(UserManager usuarios) {
+		
+		this.usuarios = usuarios;
+		login();
+		
+	}
+	
+	public static void  login() {
+		while(regla== false) {
+		String usuario,password;
+		System.out.println("Ingrese Usuario");
+		usuario = sc.next();
+		System.out.println("Ingrese Password");
+		password = sc.next();
+		
+		
+		
+			
+		for(int i =0;i<10;i++){
+			
+			if(useras[i][i]!=null &&useras[i][i]!=null ) {
+			
+			if(useras[i][i].equals(usuario) && useras[i][i+1].equals(password)) {
+				Ingreso();
+				regla = true;
+				
+			}else {
+				
+				regla = false;
+			}
+			}
+		}
+		
+		if(regla==false) {
+		System.out.println("Credenciales Incorrectas");
+		}
+		
+		
+		}
+		
+	}
+	
+	public static void  NuevoUsuario() {
+		
+		while(regla==false) {
+			
+
+			if(useras[9][9] != null) {
+				System.out.println("\nNuemero de usuarios maximos alcanzados");
+				PrimerIngreso();
+				regla=true;
+			
+			}else {
+				
+		String usuario,password;
+		System.out.println("Ingrese Nuevo Usuario");
+		usuario = sc.next();
+		System.out.println("Ingrese Contraseña");
+		password = sc.next();
+	
+		
+		for(int i =1;i<10;i++){
+			
+			if(useras[i][i+1]==null && useras[i][i]==null) {
+				
+				useras[i][i]  = usuario ;
+				useras[i][i+1]  = password ;
+				
+				System.out.println("Desea ingresar otro nuevo usuario? \n[1]Si \n[2]No");
+				otro = sc.nextInt();
+				
+				if(otro ==1) {
+					
+					regla=false;
+					break;
+				}else { 
+					PrimerIngreso();
+					regla=true;
+					break;
+					}}}
+		for(int i =0;i<10;i++){
+			
+			System.out.println("Usuario: " +  useras[i][i] + " contra: " + useras[i][i+1] + " Usuario de validacion " +  useras[9][9] );
+			
+		}
+		
+		}
+		
+		 }
+	
+	  }
+		
+	
+	
+	public static void Ingreso() {
+	
+		System.out.println("Bienvenido");
+		 PrimerIngreso();
+	}
+
+	public static void PrimerIngreso() {
+		
+		
+		System.out.println("1.Cargar Alumnos\n2.Cargar Profesores\n3.Cargas Cursos\n4.Asignar Alumnos\n5.Registrar Profesores"
+				+ "\n6.Menu de Reportes\n7.Registrar Usuario\n8.Cerrar Sesion\n9.Salir");
+		op = sc.nextInt();
+		
+		while(op!=100) {
+		switch(op) {
+		//Carga Alumno
+		case 1:
+			as.GuardarAlumnos();
+			break;
+		//Carga Profesores
+		case 2:
+			as.GuardarProfesores();
+			break;
+		//Carga Cursos
+		case 3:
+			as.GuardarCursos();
+			break;
+		//Asignar Alumnos
+		case 4:
+			as.AsignarAA();
+			break;
+		//Asignar Profesor			
+		case 5:
+			as.AsignarAP();
+			break;
+		//Reportes sesion	
+		case 6:
+			break;
+		//Registar usuario		
+		case 7:
+			NuevoUsuario();
+			break;
+		//Cerrar sesion 	
+		case 8:
+			login();
+			break;
+		//Salir 
+		case 9:
+			System.out.println("Gracias por usar");
+			op = 100;
+			
+			
+		default :
+			op = 100;
+			} 
+		
+      }
+	}
+}
+
+	
+
+

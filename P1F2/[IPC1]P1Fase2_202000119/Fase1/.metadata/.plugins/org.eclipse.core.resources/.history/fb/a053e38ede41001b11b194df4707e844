@@ -1,0 +1,111 @@
+package save;
+
+
+
+public class AlmacenarDatos {
+	
+	//Administradores
+		public static  String Administradores[][] = new String[10][4];
+
+		
+		//Para el uso 
+		String name,lastname,user,pass;
+		
+		//Agregar admin
+		public static void addAdmib(String name,String lastname,String user,String pass){
+			int op=1;
+
+			for(int i=0;i<10;i++) {
+				
+				if(AlmacenarDatos.Administradores[i][0] != null ) {
+					
+					if(user.equals(AlmacenarDatos.Administradores[i][2])) {
+						
+						System.out.println("El usuario ya existe");
+						
+						op=0;
+					}else {
+						
+					
+						
+					}
+					
+					
+					
+				}
+				
+			}
+			
+			if(op!=0) {
+			
+				if(Administradores[9][3] != null) {
+					//System.out.println("\nNuemero de usuarios maximos alcanzados");
+					//PrimerIngreso();
+					
+				
+				}else {
+					
+			
+			
+					for(int i=0; i<10;i++) {
+				
+						if( user == Administradores[i][2]) {
+							
+							System.out.println("\nUsuario en uso " );
+							break;
+							//Usuario en uso
+					}else{
+					
+						if(Administradores[i][0] == null) {
+						
+							
+							Administradores[i][0] =name;
+							Administradores[i][1]=lastname;
+							Administradores[i][2]=user;
+							Administradores[i][3]=pass;
+							System.out.println("\ningreso " + Administradores[i][2] + "  usu " + i);
+							break;
+							
+							//Usuario ingresado con exito
+						
+							} 
+					
+						}	
+				
+					}
+		
+				}
+			
+			}
+			
+			
+		
+		}
+		
+		//Cambiar datos Admin
+		public void CambioAdmin(String name,String lastname,String user,String pass){
+		
+			for(int i=1;i<10;i++) {
+				
+				if(user.equals(this.Administradores[i][3])) {
+					
+					name = Administradores[i][0];
+					lastname = Administradores[i][1];
+					user = Administradores[i][2];
+					pass = Administradores[i][3];
+					//Usuario actulizado con exito 
+				}else{
+					//Usuario no existe
+					
+				}
+				
+				
+			}
+			
+		}
+		
+		public void CambioUsuario(String user){
+			
+			
+		}
+}

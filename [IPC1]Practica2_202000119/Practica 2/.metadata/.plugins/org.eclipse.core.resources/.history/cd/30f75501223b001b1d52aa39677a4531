@@ -1,0 +1,42 @@
+package Users;
+
+public class User {
+
+	private String usuario;
+	private String contrasena;
+	
+	
+	public User(String usuario, String contrasena) {
+		
+		this.setUsuario(usuario);
+		this.setContrasena(contrasena);
+		
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+

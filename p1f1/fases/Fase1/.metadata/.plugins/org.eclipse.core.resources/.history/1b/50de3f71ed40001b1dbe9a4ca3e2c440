@@ -1,0 +1,43 @@
+package interfaz;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Pantallas extends JFrame {
+
+
+	public void PerfilAdmin() {
+		
+		
+		this.setTitle("Loginas");
+		this.setSize(400,400);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		
+		JLabel lbl = new JLabel("Recuperar Contrasena");
+		lbl.setBounds(140,10,130,40);
+		this.add(lbl);
+		
+	
+		JTextField tf = new JTextField("Usuario");
+		tf.setBounds(125,120,150,20);
+		this.getContentPane().add(tf);
+		this.setVisible(true);
+		
+		
+		JTextField t = new JTextField("Ingrese pregunta secreta");
+		t.setBounds(125,150,150,20);
+		this.getContentPane().add(t);
+		this.setVisible(true);
+		
+		
+		JButton boton = new JButton("Rescuperar contraseña");
+		boton.setBounds(125,250,150,20);
+		this.add(boton);
+		
+	}
+	
+
+}

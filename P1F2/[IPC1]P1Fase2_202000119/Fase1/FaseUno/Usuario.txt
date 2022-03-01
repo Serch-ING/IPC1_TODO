@@ -1,0 +1,1 @@
+Usuario,nombre,apellido,contra,ola,perfil.jpg,15,M,Cliente

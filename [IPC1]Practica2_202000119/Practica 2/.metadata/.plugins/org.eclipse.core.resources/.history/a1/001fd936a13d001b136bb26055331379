@@ -1,0 +1,63 @@
+package users;
+
+public class UserManager {
+
+	User[] usuarios;
+	
+	public UserManager() {
+		
+		usuarios = new User[10];
+	}
+	
+	
+	
+	//Insertar usuarios 
+	public boolean InsertUser(String nombre, String contrasena) {
+		
+		for(int i =0;i<10;i++){
+			
+			if(usuarios[i]==null) {
+				
+				usuarios[i] = new User(nombre,contrasena);
+				return true;
+				
+			}
+		}
+		
+		return true;
+		
+	}
+	
+	//Ver Usuarios
+	public void ShowUseres() {
+		
+		for(int i =0;i<10;i++){ 
+			System.out.println(usuarios[i]);
+			}
+	}
+	
+	
+	//Validacion de usuaios
+	public boolean UserCheck(String nombre, String contrasena) {
+		
+		
+		for(int i =0;i<10;i++){
+			
+			if(usuarios[i]!=null) {
+				
+				if(usuarios[i].getUsuario().equals(nombre)
+					&& usuarios[i].getContrasena().equals(contrasena)) {	
+					
+					return true;
+				
+				}
+				
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,17 @@
+import interfaz.Login;
+
+import usuarios.*;
+
+public class main {
+
+	public static void main(String[] args) {
+		GestorUsuarios gestor = new GestorUsuarios();
+		gestor.insertar("1","1");
+		Login login = new Login(gestor);
+		System.out.println("asd");
+		
+		
+		
+	}
+
+}

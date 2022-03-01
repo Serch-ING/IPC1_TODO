@@ -1,0 +1,68 @@
+package principal;
+import users.UserManager;
+import menu.Menu;
+import optencion.obtenercsv;
+import reporte.Reportes;
+import optencion.Asignacion;
+
+public class main {
+	
+	static obtenercsv as = new obtenercsv();
+
+	
+	public static void main(String[] args) {
+
+		UserManager gestor = new UserManager();
+		gestor.InsertUser("admin", "1234");
+		//Menu menu = new Menu(gestor);
+		//menu.login();
+		
+
+		as.GuardarAlumnos();
+		as.GuardarProfesores();
+		as.GuardarCursos();
+		as.AsignarAA();
+		as.AsignarAP();
+		
+		System.out.println("\n Guardar Lista Alum");
+		as.GuardarListaAA();
+	
+		System.out.println("\n Guardar Lista Prof");
+		as.GuardarListaAP();
+		
+		System.out.println("\n Guardar Cursos y Notas");
+		as.GuardarListaAC();
+		
+		
+		//Asignar a los profesores a cursos
+		Asignacion.AsignarCursosProfesores();
+		
+		//Asignar a los alumnos a cursos
+		Asignacion.AsignarCursosAlumnos();
+	
+		//Cursos y notas
+		Asignacion.AsignarCursos();
+		
+		 
+		//Mostrar asignaciones de profesores a cursos
+		System.out.println(" \n Mostrar Asignaciones Cursos Profesores");
+		Asignacion.MostrarAsignarCursosProf();
+		
+		//Mostrar asignaciones de alumnos a cursos
+		
+		System.out.println(" \n Mostrar Asignaciones Cursos Alumnos");
+		Asignacion.MostrarAsignarCursosAlum();
+
+		System.out.println(" \n\n Mostrar Notas y cursos");
+		Asignacion.MostrarAsignarCursosNotas();
+		Reportes.Mayores();
+		Reportes.Menores();
+		
+		//Reportes.ReporteStarrt();
+		//Reportes.ReporteCrusos();
+		//Reportes.ReporteJuntar();
+		//Reportes.ReporteMostrar();
+		
+	}
+
+}

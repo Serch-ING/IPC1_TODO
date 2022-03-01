@@ -1,0 +1,26 @@
+import interfaz.Login;
+
+import usuarios.*;
+import save.AlmacenarDatos;
+
+
+
+public class main {
+	
+	 static AlmacenarDatos almace;
+	
+	public static void main(String[] args) {
+		GestorUsuarios gestor = new GestorUsuarios();
+		gestor.insertar("1","1");
+		//Login login = new Login(gestor);
+		System.out.println("asd");
+		AlmacenarDatos.addAdmib("Usuario","Maestro","Nombre de Usuario","admin");
+		
+			System.out.println(AlmacenarDatos.Administradores[0][0]);
+		
+		
+		
+		
+	}
+
+}

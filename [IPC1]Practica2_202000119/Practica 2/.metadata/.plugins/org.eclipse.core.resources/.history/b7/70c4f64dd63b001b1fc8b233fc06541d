@@ -1,0 +1,131 @@
+package optencion;
+
+
+public class Asignacion {
+	
+	
+	
+	//Para Id
+	public static  String id[][];
+	//Para Name
+	public static  String name[][];
+	//Para Age
+	public static  String age[][];
+	//Para sex
+	public static  String sex[][];
+	//Para sex
+	
+	//Asignaciones
+	public static  String AsignarAlumnos[][];
+	public static  String AsignarProfesores[][];
+
+	
+	//Mostrar los cursos asignados para profesores
+	public static void MostrarAsignarCursosProf() {
+		
+		for(int i=0;i<obtenercsv.rowsProfesores;i++) {
+ 			
+ 			for(int j=0;j<6;j++) {
+ 				
+		System.out.print(AsignarProfesores[i][j] + " ");	
+		
+ 			}
+ 			System.out.println("");	
+		
+		}
+	}
+	
+	//Asignar los cursos asignados para profesores
+	public static void AsignarCursosProfesores() {
+		
+		for(int i=0;i<obtenercsv.rowsAP;i++) {
+ 			
+ 			for(int j=0;j<obtenercsv.rowsProfesores;j++) {
+ 	 			
+ 				for(int k=0;k<obtenercsv.rowsCursos;k++) {
+ 	 			
+ 				if(obtenercsv.GuardarProfesores[j][0].equals(obtenercsv.AsignarAP[i][0])) {
+ 					
+ 					if(obtenercsv.GuardarCursos[k][0].equals(obtenercsv.AsignarAP[i][1])){
+ 						
+ 						for(int q=3;q<6;q++) {	
+ 							
+ 							if(AsignarProfesores[j][q] == null) {
+
+ 								AsignarProfesores[j][q] = obtenercsv.GuardarCursos[k][1];
+ 							
+ 								if(AsignarProfesores[j][q] != null) {	
+ 							
+ 	 								break;
+ 	 								
+ 	 							}
+ 							}
+ 						}
+ 						
+ 						
+ 					}
+ 					
+ 				}
+ 				
+ 	 			}
+ 			}
+ 			}	
+
+		}
+
+	//Mostrar los cursos asignados para Alumnos
+	public static void MostrarAsignarCursosAlum() {
+		
+		for(int i=0;i<obtenercsv.rowsAlumnos;i++) {
+ 			
+ 			for(int j=0;j<6;j++) {
+ 				
+		System.out.print(AsignarAlumnos[i][j] + " ");	
+		
+ 			}
+ 			System.out.println("");	
+		
+		}
+	}
+	
+	//Asignar los cursos asignados para Alumnos
+	public static void AsignarCursosAlumnos() {
+		
+		for(int i=0;i<obtenercsv.rowsAA;i++) {
+ 			
+ 			for(int j=0;j<obtenercsv.rowsAlumnos;j++) {
+ 	 			
+ 				for(int k=0;k<obtenercsv.rowsCursos;k++) {
+ 	 			
+ 				if(obtenercsv.GuardarAlumnos[j][0].equals(obtenercsv.AsignarAA[i][0])) {
+ 					
+ 					if(obtenercsv.GuardarCursos[k][0].equals(obtenercsv.AsignarAA[i][1])){
+ 						
+ 						for(int q=3;q<6;q++) {	
+ 							
+ 							if(AsignarAlumnos[j][q] == null) {
+
+ 								AsignarAlumnos[j][q] = obtenercsv.GuardarCursos[k][1];
+ 							
+ 								if(AsignarAlumnos[j][q] != null) {	
+ 							
+ 	 								break;
+ 	 								
+ 	 							}
+ 							}
+ 						}
+ 						
+ 						
+ 					}
+ 					
+ 				}
+ 				
+ 	 			}
+ 			}
+ 			}	
+
+		}
+	
+	
+	
+}

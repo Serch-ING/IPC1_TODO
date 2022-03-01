@@ -1,0 +1,82 @@
+package interfaz;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import usuarios.GestorUsuarios;
+
+public class Login extends JFrame {
+	
+	GestorUsuarios gestor;
+	JTextField username;
+	JPasswordField password;
+	JButton boton;
+	Color fondo = new java.awt.Color(204,166,166);
+	mouse oyeraton = new mouse();
+	
+	public Login(GestorUsuarios gestor) {
+		
+		this.gestor = gestor;
+		this.setTitle("Login");
+		this.setSize(400,400);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		JLabel lbl = new JLabel("Usuario :");
+		lbl.setBounds(100,10,100,40);
+		this.add(lbl);
+		lbl = new JLabel("Password :");
+		lbl.setBounds(100,60,100,40);
+		this.add(lbl);
+		JLabel lbrecurperar = new JLabel("Recuperar Contraseña");
+		lbrecurperar.setBounds(100,150,130,40);
+		this.add(lbrecurperar);
+		JLabel lbrecrear = new JLabel("Crear un cuenta");
+		lbrecrear.setBounds(100,200,130,40);
+		this.add(lbrecrear);
+		//Maouse lsitener
+		
+		
+		
+		
+		
+		lbrecurperar.addMouseListener(this.oyeraton.recuperar);
+		lbrecrear.addMouseListener(this.oyeraton.Crear);
+		
+		//fin mause
+		
+		username = new JTextField("");
+		username.setBounds(180,23,100,20);
+		password = new JPasswordField("");
+		password.setBounds(180,73,100,20);
+		boton = new JButton("Iniciar Sesion");
+		boton.setBounds(125,120,150,20);
+		this.add(boton);
+		this.add(username);
+		this.add(password);
+		this.getContentPane().setBackground(fondo);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		
+		boton.addActionListener(new ActionListener() 
+		{public void actionPerformed(ActionEvent e) {abrirventana();}});
+		
+	
+		
+		}
+		
+	public void abrirventana() {
+		if(this.gestor.verificar(this.username.getText(), this.password.getText())) {
+			this.dispose();
+			Principal p = new Principal();
+						
+		}else {
+			
+			JOptionPane.showMessageDialog(this, "Verifique sus Credenciales");
+			}
+	
+	}
+	
+	
+	}
+	
+

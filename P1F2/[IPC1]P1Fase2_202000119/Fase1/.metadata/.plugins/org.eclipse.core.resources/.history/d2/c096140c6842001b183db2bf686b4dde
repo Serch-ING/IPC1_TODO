@@ -1,0 +1,320 @@
+package save;
+
+import javax.swing.JOptionPane;
+
+import interfaz.Pantallas;
+import interfaz.ingreso;
+
+
+public class datosinteracciones {
+	//validar 
+	int noid;
+	int nousu;
+	Pantallas p = new Pantallas();
+	
+	public void actializacionAdmin() {
+		int op=1;
+		
+		for(int i=0;i<10;i++) {
+			
+			if(i != ingreso.nousuario && AlmacenarDatos.Administradores[i][0] != null ) {
+				
+				if(Pantallas.usuario.getText().equals(AlmacenarDatos.Administradores[i][2])) {
+					JOptionPane.showMessageDialog(null, "El usuario ya existe");
+	
+					
+					op=0;
+				}else {
+					
+				
+					
+				}
+				
+				
+				
+			}
+			
+		}
+		
+		
+			if(Pantallas.Usuario.equals(AlmacenarDatos.Administradores[ingreso.nousuario][2]) && op!=0) {
+				
+				JOptionPane.showMessageDialog(null, "Datos correspondientes actualizados");
+				if(Pantallas.nombre.getText().length() >0) {
+					
+					
+				AlmacenarDatos.Administradores[ingreso.nousuario][0] = Pantallas.nombre.getText();
+				}
+				
+				
+				if(Pantallas.apellido.getText().length() >0) {
+					
+					
+				AlmacenarDatos.Administradores[ingreso.nousuario][1] = Pantallas.apellido.getText();
+				}
+				
+				if(Pantallas.usuario.getText().length() >0) {
+					
+					
+				AlmacenarDatos.Administradores[ingreso.nousuario][2] = Pantallas.usuario.getText();
+				}
+
+				if(Pantallas.contrsena.getText().length() >0) {
+	
+	
+				AlmacenarDatos.Administradores[ingreso.nousuario][3] = Pantallas.contrsena.getText();
+				}	
+				
+				if(Pantallas.frase.getText().length() >0) {
+					
+					
+				AlmacenarDatos.Administradores[ingreso.nousuario][4] = Pantallas.frase.getText();
+					}	
+			}
+			
+		
+		p.PerfilAdmin();
+	}
+	
+	public void Recuperar() {
+		
+
+		for(int i=0;i<10;i++) {
+			if(AlmacenarDatos.Administradores[i][2]!=null) {
+				System.out.println(Pantallas.usu.getText() + "-" +AlmacenarDatos.Administradores[i][2]  );
+				
+			if(Pantallas.usu.getText().equals(AlmacenarDatos.Administradores[i][2]) && Pantallas.par.getText().equals(AlmacenarDatos.Administradores[i][4])) {
+				JOptionPane.showMessageDialog(null, AlmacenarDatos.Administradores[i][0]+" su contrasena es: " + AlmacenarDatos.Administradores[i][3]);
+	
+				
+			}
+			}
+		}
+		
+	}
+	
+	public void ActualizarCargas() {
+		
+	int op=1;
+		
+	for(int i=0;i<cargasmasivas.rowsAPPS;i++) {
+		
+		if(cargasmasivas.APPS[i][0].equals(Pantallas.idnormal.getText()) ) {
+			
+			noid = i;
+			
+		}
+		
+	}
+	
+	
+		for(int i=0;i<cargasmasivas.rowsAPPS;i++) {
+			
+			if(i != noid && cargasmasivas.APPS[i][0] != null ) {
+				
+				if(Pantallas.id.getText().equals(cargasmasivas.APPS[i][0])) {
+					JOptionPane.showMessageDialog(null, "El ID ya existe");
+					
+					
+					op=0;
+				}else {
+					
+				
+					
+				}
+				
+				
+				
+			}
+			
+		}
+		
+		if( cargasmasivas.APPS[noid][0].equals(Pantallas.idnormal.getText()) && op!=0) {
+			
+			JOptionPane.showMessageDialog(null, "Usuario: " + cargasmasivas.APPS[noid][0] + " Actualizado");
+			
+			if(Pantallas.id.getText().length() >0) {
+				
+				
+				cargasmasivas.APPS[noid][0] = Pantallas.id.getText();
+				}
+			
+			if(Pantallas.title.getText().length() >0) {
+				
+				
+				cargasmasivas.APPS[noid][1] = Pantallas.title.getText();
+				}
+			
+			if(Pantallas.dowload.getText().length() >0) {
+				
+				
+				cargasmasivas.APPS[noid][2] = Pantallas.dowload.getText();
+				}
+			
+			if(Pantallas.descripcion.getText().length() >0) {
+				
+				
+				cargasmasivas.APPS[noid][3] = Pantallas.descripcion.getText();
+				}
+			
+			if(Pantallas.precio.getText().length() >0) {
+				
+				
+				cargasmasivas.APPS[noid][4] = Pantallas.precio.getText();
+				}
+		}
+		
+		for(int i=0;i<6;i++) {
+		System.out.println(cargasmasivas.APPS[noid][i]);
+		}
+		p.aplicaciones();
+		
+		
+	}
+
+	public void EliminarCarga() {
+		
+		
+		
+		
+		for(int i=0;i<cargasmasivas.rowsAPPS;i++) {
+			
+			if(cargasmasivas.APPS[i][0].equals(Pantallas.idnormal.getText()) ) {
+				
+				noid = i;
+				
+			}
+			
+		}
+		JOptionPane.showMessageDialog(null, "Usuario: " + cargasmasivas.APPS[noid][0] + " Eliminado");
+
+				cargasmasivas.APPS[noid][0] = "";
+
+				cargasmasivas.APPS[noid][1] = "";
+				
+				cargasmasivas.APPS[noid][2] = "";
+
+				cargasmasivas.APPS[noid][3] = "";
+	
+				cargasmasivas.APPS[noid][4] = "";
+				
+				
+		p.aplicaciones();
+		
+	}
+
+	public void EliminarUsuarioAdmin() {
+
+		
+	for(int i=0;i<10;i++) {
+			
+			if(Pantallas.ModUser.getText().equals(AlmacenarDatos.Administradores[i][2])) {
+				
+				nousu = i;
+			
+			}	
+		}
+	System.out.println(nousu+ "  nosu");
+	
+	JOptionPane.showMessageDialog(null, "Usuario: " + AlmacenarDatos.Administradores[nousu][2] + " Eliminado");
+	
+		AlmacenarDatos.Administradores[nousu][0] = "";
+			
+		AlmacenarDatos.Administradores[nousu][1] = "";
+				
+		AlmacenarDatos.Administradores[nousu][2] = "";
+			
+		AlmacenarDatos.Administradores[nousu][3] = "";
+			
+		AlmacenarDatos.Administradores[nousu][4] = "";
+		
+		AlmacenarDatos.Administradores[nousu][5] = "";
+				
+		AlmacenarDatos.tabla();
+		p.Editar();
+	
+		
+	}
+
+	public void EditarAdmin() {
+		
+		
+		int op=1;
+		
+	
+		
+		for(int i=0;i<10;i++) {
+			
+			if(Pantallas.ModUser.getText().equals(AlmacenarDatos.Administradores[i][2])) {
+				
+				nousu = i;
+				System.out.println(AlmacenarDatos.Administradores[i][2] + " - " + nousu );
+			
+			}	
+		}
+		
+		
+		
+	for(int i=0;i<10;i++) {
+			
+			if(i != nousu && AlmacenarDatos.Administradores[i][0] != null ) {
+				
+				if(Pantallas.ModNewUser.getText().equals(AlmacenarDatos.Administradores[i][2])) {
+					JOptionPane.showMessageDialog(null, "El ID ya existe");
+					
+					
+					op=0;
+				}else {
+					
+				
+					
+				}
+				
+				
+				
+			}
+			
+		}
+	
+	System.out.println(" op " + op );
+	
+	if( AlmacenarDatos.Administradores[nousu][2].equals(Pantallas.ModUser.getText()) && op!=0) {
+		System.out.println(" cambiar data " + AlmacenarDatos.Administradores[nousu][2] );
+		
+		
+		JOptionPane.showMessageDialog(null, "Usuario: " + cargasmasivas.APPS[noid][0] + " Actualizado");
+		/*
+		if(Pantallas.ModNewUser.getText().length() >0) {
+			
+			
+			AlmacenarDatos.Administradores[nousu][2] = Pantallas.ModNewUser.getText();
+			
+		}
+		
+		if(Pantallas.ModNom.getText().length() >0) {
+			
+			
+			AlmacenarDatos.Administradores[nousu][0] = Pantallas.ModNom.getText();
+			
+		}
+	
+		if(Pantallas.ModApe.getText().length() >0) {
+		
+		
+		AlmacenarDatos.Administradores[nousu][1] = Pantallas.ModApe.getText();
+		
+		}
+		
+		
+	*/
+			
+	}	
+	
+	//AlmacenarDatos.tabla();
+	p.Editar();
+
+		
+	}
+}
+	
+

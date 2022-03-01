@@ -1,0 +1,281 @@
+package menu;
+import java.util.Scanner;
+import reporte.Reportes;
+
+
+
+import optencion.Asignacion;
+import optencion.obtenercsv;
+
+public class Menu {
+	public static String[ ][] useras= new String[11][12];
+	
+	static Scanner sc = new Scanner(System.in);
+	static obtenercsv as = new obtenercsv();
+	
+	public static int ooop;
+	public static String aaaaa; 
+	//Verificacion login
+	public static boolean regla;
+
+	//Opcion de usuario
+	public static int noUsuario=0;
+	public static String noUsuarioT; 
+	//Switch menu
+	public static int op;
+	public static int report;
+	
+	public static int otro;
+	
+	//Rutas de archivos
+	public static String rutaAlumnos; 
+	public static String rutaProfesores; 
+	public static String rutaCursos; 
+	public static String rutaAA; 
+	public static String rutaAP; 
+	
+	
+	public static void  login() {
+		while(regla== false) {
+		
+		String usuario,password;
+		System.out.println("Ingrese Usuario");
+		usuario = sc.next();
+		System.out.println("Ingrese Password");
+		password = sc.next();
+		
+		
+		
+			
+		for(int i =0;i<10;i++){
+			
+			if(useras[i][i]!=null &&useras[i][i]!=null ) {
+			
+			if(useras[i][i].equals(usuario) && useras[i][i+1].equals(password)) {
+				noUsuario = i;
+				System.out.println(noUsuario);
+				Ingreso();
+				regla = true;
+				
+			}else {
+				System.out.println("Desea recuperar contraseña?\n[1]Si\n[2]No");
+				ooop = sc.nextInt();
+				
+				
+				if(ooop==1) {
+					
+					System.out.println("Ingrese nombre de usuario");
+					aaaaa = sc.next();
+					
+					for(int p =0;p<10;p++){
+						
+						if(useras[i][i].equals(aaaaa)) {
+							System.out.println("La contrasena de: " + useras[i][i] + " es: " +  useras[i][i+1] + "\n" );
+							break;
+							
+						}else {
+							
+							System.out.println("Usuario inexistente");
+						}
+						
+					}
+					
+					
+					
+				}
+				
+				regla = false;
+			}
+			}
+		}
+		
+		if(regla==false) {
+		System.out.println("Credenciales Incorrectas");
+		}
+		
+		
+		}
+		
+	}
+	
+	public static void  NuevoUsuario() {
+		
+		while(regla==false) {
+			
+
+			if(useras[9][9] != null) {
+				System.out.println("\nNuemero de usuarios maximos alcanzados");
+				PrimerIngreso();
+				regla=true;
+			
+			}else {
+				
+		String usuario,password;
+		System.out.println("Ingrese Nuevo Usuario");
+		usuario = sc.next();
+		System.out.println("Ingrese Contraseña");
+		password = sc.next();
+	
+		
+		for(int i =1;i<10;i++){
+			
+			if(useras[i][i+1]==null && useras[i][i]==null) {
+				
+				useras[i][i]  = usuario ;
+				useras[i][i+1]  = password ;
+				
+				System.out.println("Desea ingresar otro nuevo usuario? \n[1]Si \n[2]No");
+				otro = sc.nextInt();
+				
+				if(otro ==1) {
+					
+					regla=false;
+					break;
+				}else { 
+					PrimerIngreso();
+					regla=true;
+					break;
+					}}}
+		for(int i =0;i<10;i++){
+			
+			System.out.println("Usuario: " +  useras[i][i] + " contra: " + useras[i][i+1] + " Usuario de validacion " +  useras[9][9] );
+			
+		}
+		
+		}
+		
+		 }
+	
+	  }
+		
+	public static void Ingreso() {
+	
+		System.out.println("Bienvenido: " + useras[noUsuario][noUsuario]);
+		
+		
+		 PrimerIngreso();
+	}
+
+	public static void PrimerIngreso() {
+		
+		while(op!=100) {
+			 System.out.print( "\n");
+			System.out.println("1.Cargar Alumnos\n2.Cargar Profesores\n3.Cargas Cursos\n4.Asignar Alumnos\n5.Registrar Profesores"
+					+ "\n6.Menu de Reportes\n7.Registrar Usuario\n8.Cerrar Sesion\n9.Salir");
+			op = sc.nextInt(); 
+		switch(op) {
+		//Carga Alumno
+		case 1:
+			System.out.println("Ingrese la ruta para la carga de alumnos");
+			rutaAlumnos = sc.next();
+			as.GuardarAlumnos();
+			break;
+		//Carga Profesores
+		case 2:
+			System.out.println("Ingrese la ruta para la carga de Profesores");
+			rutaProfesores = sc.next();
+			as.GuardarProfesores();
+			break;
+		//Carga Cursos
+		case 3:
+			System.out.println("Ingrese la ruta para la carga de Cursos");
+			rutaCursos = sc.next();
+			as.GuardarCursos();
+			break;
+		//Asignar Alumnos
+		case 4:
+			System.out.println("Ingrese la ruta para la carga de aignacion de cursos a alumnos");
+			rutaAA = sc.next();
+			as.AsignarAA();
+			break;
+		//Asignar Profesor			
+		case 5:
+			System.out.println("Ingrese la ruta para la carga de aignacion de cursos a Profesores");
+			rutaAP = sc.next();
+			as.AsignarAP();
+			break;
+		//Reportes sesion	
+		case 6:
+			System.out.println("1.Reporte de Alumnos\n2.Reporte de Profesores\n3.Reporte de Cursos\n4.Mejores 5 Alumnos\n5.Peores 5 Alumnos\n6.Volver");
+			report = sc.nextInt(); 
+			switch(report){
+				
+			case 1:
+				as.GuardarListaAA();
+				Asignacion.AsignarCursosAlumnos();
+				Reportes.ReporteAlum();
+				Reportes.ReporteJuntar();
+				break;
+			case 2:
+				as.GuardarListaAP();
+				Asignacion.AsignarCursosProfesores();
+				Reportes.ReporteProf();
+				Reportes.ReporteJuntar();
+				break;
+			case 3:
+				as.GuardarListaAC();
+				Asignacion.AsignarCursos();
+				Reportes.ReporteCrusos();
+				Reportes.ReporteJuntar();
+				break;
+			case 4:
+				Reportes.Mayores();
+				Reportes.ReporteJuntar();
+				
+				break;
+			case 5:
+				Reportes.Menores();
+				Reportes.ReporteJuntar();
+				
+				break;
+			case 6:
+			
+				
+				break;
+				default: 
+					System.out.println("Opcion incorrecta");
+					break;
+
+			}
+			
+			break;
+		//Registar usuario		
+		case 7:
+			NuevoUsuario();
+			break;
+		//Cerrar sesion 	
+		case 8:
+			
+			 rutaAlumnos="";
+			 rutaProfesores="";
+			 rutaCursos="";
+			 rutaAA ="";
+			 rutaAP="";
+			 Reportes.ReporteMidAlum ="";
+			 Reportes. ReporteMidPrf ="";
+			 Reportes.ReporteMidCursos ="";
+			 Reportes.ReporteMayores ="";
+			 Reportes.ReporteMenores="";
+			 
+			 
+			 
+			
+			break;
+		//Salir 
+		case 9:
+			System.out.println("Gracias por usar");
+			op = 100;
+			 System.exit(0);
+			
+		default :
+			System.out.println("Opcion incorrecta");
+	
+			} 
+		
+      }
+	}
+}
+
+	
+
+

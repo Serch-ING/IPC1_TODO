@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="jdk.internal.org.jline.reader.impl.history.DefaultHistory"/>
+    <fullyQualifiedTypeName name="alumno.AlumnoManager"/>
+    <fullyQualifiedTypeName name="optencion.obtenercsv"/>
+    <fullyQualifiedTypeName name="optencion.Asignacion"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="reporte.Reportes"/>
+    <fullyQualifiedTypeName name="com.sun.java.swing.action.ExitAction"/>
+    <fullyQualifiedTypeName name="menu.Menu"/>
+</qualifiedTypeNameHistroy>

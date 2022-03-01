@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\Sergie Arizandieta\Desktop\Vacas\Lab IPC\Proyectos\Practica 2\.metadata\.plugins\org.eclipse.jdt.core
+2821625957.index
+239727438.index

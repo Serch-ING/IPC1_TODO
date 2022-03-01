@@ -1,0 +1,69 @@
+package alumno;
+
+import users.User;
+
+public class AlumnoManager {
+
+	Alumno[][] alumno;
+	
+	public AlumnoManager() {
+		
+		alumno = new Alumno[150][4];
+		
+	}
+	
+	
+	//Insertar alumnos 
+	public boolean InsertUser(String matriz[][]) {
+		
+		for(int i =1;i<=150;i++){
+			
+			for(int j =1;i<=4;i++){
+				
+			if(alumno[i][j]==null) {
+				System.out.println("Alimno inset");
+				System.out.println(matriz[i][j]);
+				alumno[i][j] = new Alumno(matriz[i][j]);
+				return true;
+				
+			}
+		}
+		}
+		return true;
+		
+	}
+	
+	//Ver Alumnos
+	public void ShowAlumnos() {
+		
+		for(int i =0;i<150;i++){ 
+			for(int j =0;i<4;i++){
+			System.out.println(alumno[i][j]);
+			}
+			}
+	}
+	
+	
+	//Validacion de usuaios
+	/*
+	public boolean UserCheck(String nombre, String contrasena) {
+		
+		
+		for(int i =0;i<10;i++){
+			
+			if(alumno[i][j]!=null) {
+				
+				if(alumno[i][j]].getUsuario().equals(nombre)
+					&& alumno[i][j].getContrasena().equals(contrasena)) {	
+					
+					return true;
+				
+				}
+				
+			}
+		}
+		return false;
+	}
+	*/
+	
+}

@@ -1,0 +1,132 @@
+package principal;
+import users.UserManager;
+
+import java.util.Scanner;
+
+import menu.Menu;
+import optencion.obtenercsv;
+import reporte.Reportes;
+import optencion.Asignacion;
+
+
+public class main {
+	static Scanner sc = new Scanner(System.in);
+	
+	static obtenercsv as = new obtenercsv();
+
+	public static int op;
+	public static void main(String[] args) {
+		
+		UserManager gestor = new UserManager();
+		gestor.InsertUser("admin", "1234");
+		Menu menu = new Menu(gestor);
+		menu.login();
+		
+		System.out.println("\n Noce que pasa");
+		
+		
+		System.out.println("1.Cargar Alumnos\n2.Cargar Profesores\n3.Cargas Cursos\n4.Asignar Alumnos\n5.Registrar Profesores"
+				+ "\n6.Menu de Reportes\n7.Registrar Usuario\n8.Cerrar Sesion");
+		
+		op = sc.nextInt();
+		
+		switch(op) {
+		//Carga Alumno
+		case 1:
+			as.GuardarAlumnos();
+			
+			break;
+		//Carga Profesores
+		case 2:
+			as.GuardarProfesores();
+			
+			break;
+		//Carga Cursos
+		case 3:
+			as.GuardarCursos();
+			
+			break;
+		//Asignar Alumnos
+		case 4:
+			as.AsignarAA();
+			
+			break;
+		//Asignar Profesor			
+		case 5:
+			as.AsignarAP();
+			
+			break;
+		//Reportes sesion	
+		case 6:
+		 		
+			break;
+		//Registar usuario		
+		case 7:
+			NuevoUsuario();
+			break;
+		//Cerrar sesion 	
+		case 8:
+	
+			break;
+		default :
+			
+		
+		break;
+		
+		
+		}
+
+	
+		
+		/*
+		as.GuardarAlumnos();
+		as.GuardarProfesores();
+		as.GuardarCursos();
+		
+		as.AsignarAA();
+		as.AsignarAP();
+		
+		System.out.println("\n Guardar Lista Alum");
+		as.GuardarListaAA();
+	
+		System.out.println("\n Guardar Lista Prof");
+		as.GuardarListaAP();
+		
+		System.out.println("\n Guardar Cursos y Notas");
+		as.GuardarListaAC();
+		
+		
+		//Asignar a los profesores a cursos
+		Asignacion.AsignarCursosProfesores();
+		
+		//Asignar a los alumnos a cursos
+		Asignacion.AsignarCursosAlumnos();
+	
+		//Cursos y notas
+		Asignacion.AsignarCursos();
+		
+		 
+		//Mostrar asignaciones de profesores a cursos
+		System.out.println(" \n Mostrar Asignaciones Cursos Profesores");
+		Asignacion.MostrarAsignarCursosProf();
+		
+		//Mostrar asignaciones de alumnos a cursos
+		
+		System.out.println(" \n Mostrar Asignaciones Cursos Alumnos");
+		Asignacion.MostrarAsignarCursosAlum();
+
+		System.out.println(" \n\n Mostrar Notas y cursos");
+		Asignacion.MostrarAsignarCursosNotas();
+		Reportes.Mayores();
+		Reportes.Menores();
+		
+		Reportes.ReporteStarrt();
+		Reportes.ReporteCrusos();
+		Reportes.ReporteAlum();
+		Reportes.ReporteProf();
+		Reportes.ReporteJuntar();
+		Reportes.ReporteMostrar();*/
+		
+	}
+
+}

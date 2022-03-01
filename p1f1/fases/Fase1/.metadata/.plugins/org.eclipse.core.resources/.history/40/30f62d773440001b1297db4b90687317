@@ -1,0 +1,13 @@
+package usuarios;
+
+public class Usuarios {
+	public String nombre;
+	public String password;
+	
+	
+	public Usuarios(String nombre, String password) {
+		
+		
+		
+	}
+}

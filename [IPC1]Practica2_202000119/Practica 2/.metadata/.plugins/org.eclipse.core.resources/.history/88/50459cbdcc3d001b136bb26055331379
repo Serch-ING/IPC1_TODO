@@ -1,0 +1,764 @@
+package reporte;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+import menu.Menu;
+import optencion.Asignacion;
+import optencion.obtenercsv;
+
+
+public class Reportes {
+	Scanner sc = new Scanner(System.in);	static Scanner sc1 = new Scanner(System.in);
+	
+	//Reportes Start
+	public static String ReporteInicio="",ReporteFinal="";
+	
+	//Reportes Mdi
+	public static String ReporteMidAlum="",ReporteMidPrf="", ReporteMidCursos="";
+	//Reportes Final
+	public static String ReporteMostrar="";
+	//Reportes Final
+	public static String[] ReportShow = new String[10];
+	
+	//Reporte curso
+	public static String idcurso;
+	//Repores Cursos mayores y menores
+	public static String ReporteMayores="",ReporteMenores="";
+			
+	//Reporte mayor y menor nota
+	public static String[] mayor = new String[5];
+	public static String[] menor = new String[5];
+	
+	public static String[] mayorM = new String[150];
+	public static String[] mayorMNota = new String[150];
+	public static String[] menorM = new String[150];
+	public static String[] menorMNota = new String[150];
+	
+	//Mayor
+	public static int primero,segundo,tercero,cuarto,quinto;
+	public static String idcursotop5;
+	 public static int[ ] aux= new int[153];
+	//menor
+	 public static int pri=101,seg=101,ter=101,cua=101,quin=101;
+	 public static String idcursounder5;
+	 public static int[ ] aux2 = new int[153];
+	
+	 
+	 //Ejecutar ReportesMEjer
+	 public static void EjecucionReporteMenor() {
+		 
+		 ReporteMayores+= "<table class=\"steelBlueCols\">\r\n"
+					+ "<thead>\r\n"
+					+ "<tr>\r\n"
+					+ "<th>" + menorM[0] + "</th>\r\n"
+					+ "<th>Alumno</th>\r\n"
+					+ "<th>Nota</th>"
+					+ "</tr>\r\n"
+					+ "</thead>\r\n"
+					+ "<tbody>\r\n"
+					+ "<tr>\r\n";
+			
+			
+		
+			for(int p=0;p<6;p++) {
+				
+				if(p == 0) {
+
+					
+				
+				}else {
+					ReporteMenores+= "<td> </td> " ;
+					ReporteMenores+= "<td>" + menorM[p] +" </td> " ;
+					ReporteMenores+= "<td>" + menorMNota[p] +" </td> " ;
+					
+				}
+				
+				ReporteMenores+="</tr> \n <tr>";	
+			}
+			
+			ReporteMenores += "</tr></tbody></table><br>";
+	 }
+	 
+	 //Ejecutar ReportesMAyores
+	 public static void EjecucionReporteMayores() {
+		 
+		 ReporteMayores+= "<table class=\"steelBlueCols\">\r\n"
+					+ "<thead>\r\n"
+					+ "<tr>\r\n"
+					+ "<th>" + mayorM[0] + "</th>\r\n"
+					+ "<th>Alumno</th>\r\n"
+					+ "<th>Nota</th>"
+					+ "</tr>\r\n"
+					+ "</thead>\r\n"
+					+ "<tbody>\r\n"
+					+ "<tr>\r\n";
+			
+			
+		
+			for(int p=0;p<6;p++) {
+				
+				if(p == 0) {
+
+					
+				
+				}else {
+					ReporteMayores+= "<td> </td> " ;
+					ReporteMayores+= "<td>" + mayorM[p] +" </td> " ;
+					ReporteMayores+= "<td>" + mayorMNota[p] +" </td> " ;
+					
+				}
+				
+				ReporteMayores+="</tr> \n <tr>";	
+			}
+			
+			ReporteMayores += "</tr></tbody></table><br>";
+	 }
+	 
+	//Ver MAyores
+	public static void ReporteMayores() {
+
+			for(int p=0;p<5;p++) {
+				
+				mayorM[p]="";
+				
+		}
+			
+				for(int k=0;k<obtenercsv.rowsCursos;k++) {
+					
+					if(obtenercsv.GuardarCursos[k][0].equals(idcursotop5)){
+						
+						
+						if(Asignacion.AsignarCursos[k][0][0] != null) {
+							
+						
+							for(int e=3;e<150;e++) {
+								if(Asignacion.AsignarCursos[k][e][0]!= null && Asignacion.AsignarCursos[k][0][e]!= null) {
+									
+									mayorM[0]= "Mayores alumnos del Curso: " + Asignacion.AsignarCursos[k][1][0]+ "\n" ;
+									for(int p=0;p<5;p++) {
+										
+									if(mayor[p].equals(Asignacion.AsignarCursos[k][0][e])) {
+										
+										mayorM[p+1] =   Asignacion.AsignarCursos[k][e][0] ;
+										mayorMNota[p+1] =  Asignacion.AsignarCursos[k][0][e];
+										
+									}}
+									
+									
+								}}
+					}}}
+				
+				for(int p=0;p<6;p++) {
+				
+					if(p == 0) {
+						
+						System.out.println(mayorM[p]);
+						
+					}else {
+						
+						 System.out.println(mayorM[p] + " Con nota: " + mayorMNota[p]);	
+					}
+		}
+				
+				EjecucionReporteMayores();
+				
+				
+			}
+	 
+	//Ver Manores
+	public static void ReporteMenores() {
+		
+		for(int p=0;p<5;p++) {
+			
+		menorM[p]="";
+			
+	}
+		
+			for(int k=0;k<obtenercsv.rowsCursos;k++) {
+				
+				if(obtenercsv.GuardarCursos[k][0].equals(idcursounder5)){
+					
+					
+					if(Asignacion.AsignarCursos[k][0][0] != null) {
+						
+					
+						for(int e=3;e<150;e++) {
+							if(Asignacion.AsignarCursos[k][e][0]!= null && Asignacion.AsignarCursos[k][0][e]!= null) {
+								
+								menorM[0]= "Peores alumnos del Curso: " + Asignacion.AsignarCursos[k][1][0]+ "\n" ;
+								for(int p=0;p<5;p++) {
+									
+								if(menor[p].equals(Asignacion.AsignarCursos[k][0][e])) {
+									
+									 menorM[p+1] =   Asignacion.AsignarCursos[k][e][0];
+									 menorMNota[p+1] =   Asignacion.AsignarCursos[k][0][e];
+								}}
+								
+								
+							}}
+				}}}
+			for(int p=0;p<6;p++) {
+			
+				
+				if(p == 0) {
+					
+					System.out.println(menorM[p]);
+					
+				}else {
+				
+			 System.out.println(menorM[p] + " con nota " + menorMNota[p]);	
+				}
+	}
+			
+			EjecucionReporteMenor();
+		}
+
+	//Ver Mayores
+	public static void Menores() {
+			 
+			 
+				System.out.println("\n \n Ingrese ID del Curso que desea el MENOR");	
+				idcursounder5= sc1.next();
+				
+
+					for(int k=0;k<obtenercsv.rowsCursos;k++) {
+						
+						if(obtenercsv.GuardarCursos[k][0].equals(idcursounder5)){
+							
+							
+							if(Asignacion.AsignarCursos[k][0][0] != null) {
+								
+							
+								for(int e=3;e<150;e++) {
+									if(Asignacion.AsignarCursos[k][e][0]!= null && Asignacion.AsignarCursos[k][0][e]!= null) {
+
+										 aux2[e]= Integer.parseInt(Asignacion.AsignarCursos[k][0][e]);
+										
+									}}
+						}}}
+					
+					
+					 for(int n=3;n<150;n++) {
+						 
+						 if(aux2[n]!=0) {
+						 
+						 if(aux2[n]<pri) {
+							 
+							 pri=  aux2[n] ;
+							 
+						 } 
+						 } 
+					 }
+					 
+					 
+
+					 for(int n=3;n<150;n++) {
+						 
+						 if(aux2[n]!=0) {
+						 
+						 if(aux2[n]<seg && seg>pri) {
+							 if(pri == aux2[n]) {
+								 
+								 
+								 
+							 }else {
+								 
+								 seg=  aux2[n] ;
+							 }
+							 
+						 } 
+						 } 
+					 }
+					 
+					 for(int n=3;n<150;n++) {
+						 
+						 if(aux2[n]!=0) {
+						 
+						 if(aux2[n]<ter && ter>seg) {
+							 if(seg == aux2[n] || pri == aux2[n] ) {
+								 
+								 
+								 
+							 }else {
+								 
+								 ter=  aux2[n] ;
+							 }
+							 
+						 } 
+						 } 
+					 }
+					 
+					 
+					 for(int n=3;n<150;n++) {
+						 
+						 if(aux2[n]!=0) {
+						 
+						 if(aux2[n]<cua && cua>ter) {
+							 if(seg == aux2[n] || pri == aux2[n] || ter == aux2[n] ) {
+								 
+								 
+								 
+							 }else {
+								 
+								 cua=  aux2[n] ;
+							 }
+							 
+						 } 
+						 } 
+					 }
+					 
+					 
+					 for(int n=3;n<150;n++) {
+						 
+						 if(aux2[n]!=0) {
+						 
+						 if(aux2[n]<quin && quin>cua) {
+							 if(seg == aux2[n] || pri == aux2[n] || ter == aux2[n] ||cua == aux2[n] ) {
+								 
+								 
+								 
+							 }else {
+								 
+								 quin=  aux2[n] ;
+							 }
+							 
+						 } 
+						 } 
+					 }
+					 
+					 menor[0] = Integer.toString(pri);
+					 menor[1] = Integer.toString(seg);
+					 menor[2] = Integer.toString(ter);
+					 menor[3] = Integer.toString(cua);
+					 menor[4] = Integer.toString(quin);
+					// for(int k=0;k<5;k++) {
+						 
+						// System.out.println( menor[k] );
+						
+						 
+					// }
+					 ReporteMenores();
+		 }
+
+	 //Ver Mayores
+	 public static void Mayores() {
+		 
+		 
+			System.out.println("\n \n Ingrese ID del Curso que desea desea el MAYOR");	
+			idcursotop5= sc1.next();
+			
+
+				for(int k=0;k<obtenercsv.rowsCursos;k++) {
+					
+					if(obtenercsv.GuardarCursos[k][0].equals(idcursotop5)){
+						
+						
+						if(Asignacion.AsignarCursos[k][0][0] != null) {
+							
+						
+							for(int e=3;e<150;e++) {
+								if(Asignacion.AsignarCursos[k][e][0]!= null && Asignacion.AsignarCursos[k][0][e]!= null) {
+
+									 aux[e]= Integer.parseInt(Asignacion.AsignarCursos[k][0][e]);
+									
+								}}
+					}}}
+				
+				
+				 for(int n=3;n<150;n++) {
+					 
+					 if(aux[n]!=0) {
+					
+					
+			
+					 if(aux[n]>primero) {
+						 
+						 
+						 primero=  aux[n] ;
+						 
+					 }else{
+						 
+						 
+						 if(aux[n]>segundo && segundo<primero) {
+							 
+							 segundo=  aux[n] ;
+							 
+						  }else{
+							  
+							  if(aux[n]>tercero && tercero<segundo) {
+									 
+									 tercero=  aux[n] ;
+							  }else {
+								  
+								  
+								  if(aux[n]>cuarto && cuarto<tercero) {
+										 
+									  cuarto=  aux[n] ;
+									  
+								  }else {
+									  
+									  if(aux[n]>quinto && quinto<cuarto) {
+											 
+										  quinto=  aux[n] ;
+										  
+									  }}}}}}}
+				
+				 
+				 mayor[0] = Integer.toString(primero);
+				 mayor[1] = Integer.toString(segundo);
+				 mayor[2] = Integer.toString(tercero);
+				 mayor[3] = Integer.toString(cuarto);
+				 mayor[4] = Integer.toString(quinto);
+				 
+
+				 
+				 
+				// for(int k=0;k<5;k++) {
+				//	 System.out.println( mayor[k] );	 
+				//}
+				 
+				 ReporteMayores();
+				
+	 }
+
+	//Reportes crear
+	static void CrearArhivo() {
+				try {
+					File archivo = new File("Reportes/ejemplo.html");
+					if(archivo.createNewFile()) {
+						
+						
+						System.out.println("Archivo creado");	
+					}else {
+						
+						System.out.println("El archibo ya exite");
+						
+					}
+						
+				}catch(Exception e) {
+					System.out.println("Error al crear archivo");
+				}
+
+			}
+
+	//Reportes Crear Alumnos 
+	public static void ReporteAlum() {
+			
+			
+		ReporteMidAlum= "<table class=\"steelBlueCols\">\r\n"
+					+ "<thead>\r\n"
+					+ "<tr>\r\n"
+					+ "<th>ID</th>\r\n"
+					+ "<th>Alumno</th>\r\n"
+					+ "<th>Edad</th>"
+					+ "<th>Curso 1</th>\r\n"
+					+ "<th>Curso 2</th>\r\n"
+					+ "<th>Curso 3</th>\r\n"
+					+ "</tr>\r\n"
+					+ "</thead>\r\n"
+					+ "<tbody>\r\n"
+					+ "<tr>\r\n";
+			
+			
+			for(int i=0;i<obtenercsv.rowsAlumnos;i++) {
+	 			
+	 			for(int j=0;j<6;j++) {
+	 					
+	 			ReporteMidAlum+="<td>" +Asignacion.AsignarAlumnos[i][j] +" </td> " ;}
+	 				
+	 			ReporteMidAlum += "</tr> \n <tr>";}
+			
+				ReporteMidAlum += "</tr></tbody></table><br> ";}
+			
+	//Reportes Crear Profesores 
+	public static void ReporteProf() {
+			
+		ReporteMidPrf+= "<table class=\"steelBlueCols\">\r\n"
+				+ "<thead>\r\n"
+				+ "<tr>\r\n"
+				+ "<th>ID</th>\r\n"
+				+ "<th>Prof</th>\r\n"
+				+ "<th>Edad</th>"
+				+ "<th>Curso 1</th>\r\n"
+				+ "<th>Curso 2</th>\r\n"
+				+ "<th>Curso 3</th>\r\n"
+				+ "</tr>\r\n"
+				+ "</thead>\r\n"
+				+ "<tbody>\r\n"
+				+ "<tr>\r\n";
+		
+		
+		
+
+		for(int i=0;i<obtenercsv.rowsProfesores;i++) {
+ 			
+ 			for(int j=0;j<6;j++) {
+ 					
+ 				ReporteMidPrf+="<td>" +Asignacion.AsignarProfesores[i][j] +" </td> " ;
+ 			}
+ 				
+ 			ReporteMidPrf+="</tr> \n <tr>";
+		}
+			
+		ReporteMidPrf += "</tr></tbody></table><br>";
+		}
+	
+	//Reportes Crear Cursos 
+	public static void ReporteCrusos() {
+			
+		System.out.println("\n \n Ingrese ID del Curso que desea ver");	
+		idcurso= sc1.next();
+		
+
+			for(int k=0;k<obtenercsv.rowsCursos;k++) {
+				
+				if(obtenercsv.GuardarCursos[k][0].equals(idcurso)){
+					
+					
+					if(Asignacion.AsignarCursos[k][0][0] != null) {
+						
+						ReporteMidCursos+= "<table class=\"steelBlueCols\">\r\n"
+							+ "<thead>\r\n"
+							+ "<tr>\r\n"
+							+ "<th>ID</th>\r\n"
+							+ "<th>Curso</th>\r\n"
+							+ "<th>Alumnos</th>"
+							+ "<th>Notas</th>\r\n"
+							+ "</tr>\r\n"
+							+ "</thead>\r\n"
+							+ "<tbody>\r\n"
+							+ "<tr>\r\n";
+					
+					
+						
+						for(int e=3;e<150;e++) {
+							if(Asignacion.AsignarCursos[k][e][0]!= null && Asignacion.AsignarCursos[k][0][e]!= null) {
+		 					
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][0] +" </td> " ;
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][1][0] +" </td> " ;
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][e][0] +" </td> " ;
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][e] +" </td> " ;
+								ReporteMidCursos+="</tr> \n <tr>";
+							}else {
+								if(e==3) {
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][0] +" </td> " ;
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][1][0] +" </td> " ;
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][e][0] +" </td> " ;
+								ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][e] +" </td> " ;
+								ReporteMidCursos+="</tr> \n <tr>";
+								break;
+								
+								}
+							}
+							}
+					
+						ReporteMidCursos += "</tr></tbody></table><br>";
+				
+				}
+					
+				}
+			}
+		}
+		
+	//Reportes Crear
+	public static void ReporteDo() {
+					
+					
+				ReporteMidAlum= "<table class=\"steelBlueCols\">\r\n"
+							+ "<thead>\r\n"
+							+ "<tr>\r\n"
+							+ "<th>ID</th>\r\n"
+							+ "<th>Alumno</th>\r\n"
+							+ "<th>Edad</th>"
+							+ "<th>Curso 1</th>\r\n"
+							+ "<th>Curso 2</th>\r\n"
+							+ "<th>Curso 3</th>\r\n"
+							+ "</tr>\r\n"
+							+ "</thead>\r\n"
+							+ "<tbody>\r\n"
+							+ "<tr>\r\n";
+					
+					
+					
+
+					for(int i=0;i<obtenercsv.rowsAlumnos;i++) {
+			 			
+			 			for(int j=0;j<6;j++) {
+			 					
+			 				ReporteMidAlum+="<td>" +Asignacion.AsignarAlumnos[i][j] +" </td> " ;
+			 			}
+			 				
+			 			ReporteMidAlum += "</tr> \n <tr>";
+			 		
+					}
+					
+					ReporteMidAlum += "</tr></tbody></table><br> ";
+					
+					
+					
+					ReporteMidPrf+= "<table class=\"steelBlueCols\">\r\n"
+							+ "<thead>\r\n"
+							+ "<tr>\r\n"
+							+ "<th>ID</th>\r\n"
+							+ "<th>Prof</th>\r\n"
+							+ "<th>Edad</th>"
+							+ "<th>Curso 1</th>\r\n"
+							+ "<th>Curso 2</th>\r\n"
+							+ "<th>Curso 3</th>\r\n"
+							+ "</tr>\r\n"
+							+ "</thead>\r\n"
+							+ "<tbody>\r\n"
+							+ "<tr>\r\n";
+					
+					
+					
+
+					for(int i=0;i<obtenercsv.rowsProfesores;i++) {
+			 			
+			 			for(int j=0;j<6;j++) {
+			 					
+			 				ReporteMidPrf+="<td>" +Asignacion.AsignarProfesores[i][j] +" </td> " ;
+			 			}
+			 				
+			 			ReporteMidPrf+="</tr> \n <tr>";
+					}
+						
+					ReporteMidPrf += "</tr></tbody></table><br>";
+					
+					
+					
+					
+					
+					for(int k=0;k<obtenercsv.rowsCursos ;k++) {
+						
+						if(Asignacion.AsignarCursos[k][0][0] != null) {
+						
+							ReporteMidCursos+= "<table class=\"steelBlueCols\">\r\n"
+								+ "<thead>\r\n"
+								+ "<tr>\r\n"
+								+ "<th>ID</th>\r\n"
+								+ "<th>Curso</th>\r\n"
+								+ "<th>Alumnos</th>"
+								+ "<th>Notas</th>\r\n"
+								+ "</tr>\r\n"
+								+ "</thead>\r\n"
+								+ "<tbody>\r\n"
+								+ "<tr>\r\n";
+						
+						
+							
+							for(int e=3;e<150;e++) {
+								if(Asignacion.AsignarCursos[k][e][0]!= null && Asignacion.AsignarCursos[k][0][e]!= null) {
+			 					
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][0] +" </td> " ;
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][1][0] +" </td> " ;
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][e][0] +" </td> " ;
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][e] +" </td> " ;
+									ReporteMidCursos+="</tr> \n <tr>";
+								}else {
+									if(e==3) {
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][0] +" </td> " ;
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][1][0] +" </td> " ;
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][e][0] +" </td> " ;
+									ReporteMidCursos+="<td>" +Asignacion.AsignarCursos[k][0][e] +" </td> " ;
+									ReporteMidCursos+="</tr> \n <tr>";
+									break;
+									
+									}
+								}
+								}
+			 		
+						
+					
+						
+							ReporteMidCursos += "</tr></tbody></table><br>";
+					
+					}}
+					
+			}
+
+	//Reportes Mostrar
+	public static void ReporteJuntar() {
+				try{
+					
+					//if(Menu.noUsuario==0) {
+						ReportShow[Menu.noUsuario] = ReporteMidAlum + ReporteMidPrf + ReporteMidCursos + ReporteMayores + ReporteMenores ;
+				/*	}else if(Menu.noUsuario==1) {
+						
+					}else if(Menu.noUsuario==2) {
+						
+					}else if(Menu.noUsuario==3) {
+						
+					}else if(Menu.noUsuario==4) {
+						
+					}else if(Menu.noUsuario==5) {
+						
+					}else if(Menu.noUsuario==6) {
+						
+					}else if(Menu.noUsuario==7) {
+						
+					}else if(Menu.noUsuario==8) {
+						
+					}else if(Menu.noUsuario==9) {
+						
+					}
+					*/
+					
+					
+					
+				ReporteMostrar =  ReporteMidAlum + ReporteMidPrf + ReporteMidCursos + ReporteMayores + ReporteMenores ;
+				
+				
+				
+				
+				
+				ReporteMostrar();
+				}catch(Exception e) {	
+				}
+				
+			}
+
+	//Reportes Mostrar
+	public static void ReporteMostrar() {
+				try{
+				
+				
+				
+				FileWriter archivo = new FileWriter("Reportes/ejemplo.html");
+				//archivo.write(ReporteInicio+ReporteMostrar+ReporteFinal);
+				archivo.write(ReporteInicio+ReportShow[Menu.noUsuario]+ReporteFinal);
+				archivo.close();
+				
+				}catch(Exception e) {}
+				
+			}
+			
+	//Reportes incio
+	public static void ReporteStarrt() {
+
+				ReporteInicio="<!DOCTYPE html>\r\n"
+						+ "<html>\r\n"
+						+ "<head>\r\n"
+						+ "<meta charset=\"UTF-8\">\r\n"
+						+ "<meta name=\"name\" content=\"Sergie Daniel Arizandieta Yol\">\r\n"
+						+ "<meta name=\"description\" content=\"Reportes sobre opraciones de la practica 2\">\r\n"
+						+ "<meta name=\"keywods\" content=\"Opraciones de usuarios en Java\">\r\n"
+						+ "<meta name=\"robots\" content=\"Index, Follow\">\r\n"
+						+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n"
+						+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/styles.css\"/>\r\n"
+						+ "<title>Reporte</title>\r\n"
+						+ "</head>\r\n"
+						+ "\r\n"
+						+ "<body>\r\n"
+						+ "\r\n"
+						+ "<center>\r\n"
+						+ "<h1 class=\"titulos\"><font size=\"30px\"><b> Reporte</b></h1></center>\n"
+						+ "<h1 class=\"titulos\"><font size=\"30px\"><b>"+ Menu.useras[Menu.noUsuario][Menu.noUsuario] + "</b></h1></center>";
+				
+				ReporteFinal="</body>\r\n"
+						+ "</html>";
+				
+			}
+
+}

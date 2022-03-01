@@ -1,0 +1,62 @@
+package save;
+
+public class AlmacenarDatos {
+	
+	//Cleintes Alumnos
+		public  String Usuario[][];
+		public  int rowsClientes ;
+		public  int columnsClientes;
+	//Cleintes Alumnos
+		public  String Administradores[][];
+		public  int rowsAdmin ;
+		public  int Admin;
+		
+		//Para el uso 
+		String name,lastname,user,pass;
+		
+		//Agregar admin
+		public void addAdmib(String name,String lastname,String user,String pass){
+			
+			for(int i=0; i<10;i++) {
+				
+				if(this.user.equals(Usuario[i][2])) {
+					//Usuario en uso
+				}else{
+					
+					if(Usuario[i][0] != null) {
+						
+						this.name = Usuario[i][0];
+						this.lastname = Usuario[i][1];
+						this.user = Usuario[i][2];
+						this.pass = Usuario[i][3];
+						//Usuario ingresado con exito
+						
+					} 
+					
+				}
+				
+			}
+		}
+		
+		//Cambiar datos Admin
+		public void CambioAdmin(){
+			
+
+			for(int i=1;i<rowsClientes;i++) {
+				
+				if(user.equals(this.Administradores[i][3])) {
+					
+					
+					
+				}
+				
+				
+			}
+			
+		}
+		
+		public void CambioUsuario(String user){
+			
+			
+		}
+}

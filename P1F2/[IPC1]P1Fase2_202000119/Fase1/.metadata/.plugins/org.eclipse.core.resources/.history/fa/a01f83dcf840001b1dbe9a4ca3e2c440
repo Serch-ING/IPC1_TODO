@@ -1,0 +1,90 @@
+package interfaz;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+
+public class Pantallas extends JFrame {
+
+	public static String Usuario;
+	public static String Contrasena;
+
+	
+	
+	
+	public void PerfilAdmin() {
+		
+		
+		this.setTitle("Loginas");
+		this.setSize(400,400);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		
+		JLabel lbl = new JLabel("Usuario: " + Usuario);
+		lbl.setBounds(10,10,130,40);
+		this.add(lbl);
+		
+		 lbl = new JLabel("Admin");
+		lbl.setBounds(10,30,130,40);
+		this.add(lbl);
+		
+		
+		
+		
+		
+		JButton boton = new JButton("Regresar");
+		boton.setBounds(10,350,150,20);
+		this.add(boton);
+		boton.addActionListener(new ActionListener() 
+		{public void actionPerformed(ActionEvent e) {dispose(); Principal p = new Principal();}});
+		
+		this.setVisible(true);
+		
+	}
+	
+	public void USuarioAdmin() {
+		
+		
+		this.setTitle("Nuevo Usuario");
+		this.setSize(400,400);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		
+		JLabel lbl = new JLabel("Nombre de U: " + Usuario);
+		lbl.setBounds(10,10,130,40);
+		this.add(lbl);
+		
+		JTextField usu = new JTextField("");
+		usu.setBounds(10,100,130,40);
+		usu.add(lbl);
+		
+	
+		
+	
+		
+		 lbl = new JLabel("Admin");
+		lbl.setBounds(10,30,130,40);
+		this.add(lbl);
+		
+		
+		
+		
+		
+		JButton boton = new JButton("Regresar");
+		boton.setBounds(10,350,150,20);
+		this.add(boton);
+		boton.addActionListener(new ActionListener() 
+		{public void actionPerformed(ActionEvent e) {dispose(); Principal p = new Principal();}});
+		
+		this.setVisible(true);
+		
+	}
+	
+	
+	
+}
